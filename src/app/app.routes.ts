@@ -5,7 +5,5 @@ import { NoContentComponent } from './no-content';
 import { DetailComponent } from './+detail/detail.component';
 
 export const ROUTES: Routes = [
-  { path: '',      component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'detail', component: DetailComponent}
+  { path: 'about', component: AboutComponent }
 ];
