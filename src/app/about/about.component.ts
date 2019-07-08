@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -14,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
       For hot module reloading run
       <pre>npm run start:hmr</pre>
     </div>
+    <signature-pad-field></signature-pad-field>
     <div>
       <h3>
         patrick@tipe.io

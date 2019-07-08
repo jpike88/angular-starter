@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { SignaturePadModule } from 'angular2-signaturepad';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -22,6 +22,8 @@ import { DevModuleModule } from './+dev-module';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
+import { DetailComponent } from './+detail/detail.component';
+import { SignaturePadFieldComponent } from './about/signature_pad';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -45,6 +47,8 @@ interface StoreType {
     AboutComponent,
     HomeComponent,
     NoContentComponent,
+    DetailComponent,
+    SignaturePadFieldComponent,
     XLargeDirective
   ],
   /**
@@ -54,18 +58,12 @@ interface StoreType {
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    SignaturePadModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
-    }),
-
-    /**
-     * This section will import the `DevModuleModule` only in certain build types.
-     * When the module is not imported it will get tree shaked.
-     * This is a simple example, a big app should probably implement some logic
-     */
-    ...environment.showDevModule ? [ DevModuleModule ] : [],
+    })
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.

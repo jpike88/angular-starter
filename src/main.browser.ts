@@ -1,10 +1,28 @@
+
+import 'reflect-metadata';
+
+import 'core-js/features/symbol';
+import 'core-js/features/object';
+import 'core-js/features/function';
+import 'core-js/features/parse-int';
+import 'core-js/features/parse-float';
+import 'core-js/features/number';
+import 'core-js/features/math';
+import 'core-js/features/string';
+import 'core-js/features/date';
+import 'core-js/features/array';
+import 'core-js/features/regexp';
+import 'core-js/features/map';
+import 'core-js/features/weak-map';
+import 'core-js/features/set';
+import 'zone.js/dist/zone';  // Included with Angular CLI
+
 /**
  * Angular bootstrapping
  */
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { environment } from 'environments/environment';
 import { NgModuleRef } from '@angular/core';
-
 /**
  * App Module
  * our top level module that holds all of our components
@@ -15,31 +33,8 @@ import { ROOT_SELECTOR } from './app/app.component';
 /**
  * Bootstrap our Angular app with a top level NgModule
  */
-export function main(): Promise<any> {
-  let modulePromise: Promise<NgModuleRef<AppModule>> = null;
-
-  if (module['hot']) {
-    module['hot'].accept();
-    module['hot'].dispose(() => {
-      // Before restarting the app, we create a new root element and dispose the old one
-      const oldRootElem = document.querySelector(ROOT_SELECTOR);
-      const newRootElem = document.createElement(ROOT_SELECTOR);
-      oldRootElem!.parentNode!.insertBefore(newRootElem, oldRootElem);
-      if (modulePromise) {
-        modulePromise.then((appModule) => {
-          appModule.destroy();
-          if (oldRootElem !== null) {
-            oldRootElem!.parentNode!.removeChild(oldRootElem);
-          }
-          return appModule;
-        });
-      }
-    });
-  }
-
-  modulePromise = platformBrowserDynamic().bootstrapModule(AppModule);
-
-  return modulePromise.then(environment.decorateModuleRef).catch((err) => console.error(err));
+export function main() {
+  platformBrowserDynamic().bootstrapModule(AppModule);
 }
 
 /**
