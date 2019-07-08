@@ -33,9 +33,11 @@ const fuse = fusebox({
 });
 
 
-task('default', () => {
+task('prod', () => {
 
-  fuse.runProd();
+  fuse.runProd({
+    uglify: false
+  });
 
 });
 
